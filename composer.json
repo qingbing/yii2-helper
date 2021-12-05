@@ -1,0 +1,41 @@
+{
+  "name": "qingbing/yii2-helper",
+  "description": "demo 配置的设置和获取.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "yii",
+    "helper"
+  ],
+  "homepage": "http://www.phpcorner.net",
+  "authors": [
+    {
+      "name": "qingbing",
+      "email": "780042175@qq.com"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-curl": "*",
+    "php": "^7.1.0",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+    "myweishanli/yii2-ip2location": "~1.0.0",
+    "yiisoft/yii2": "~2.0.14",
+    "yiisoft/yii2-httpclient": "^2.0",
+    "yiisoft/yii2-queue": "^2.3",
+    "yiisoft/yii2-redis": "^2.0",
+    "qingbing/zf-helper": ">=1.0, <2.0"
+  },
+  "autoload": {
+    "files": [
+      "src/constant.php",
+      "src/functions.php"
+    ],
+    "psr-4": {
+      "YiiHelper\\": "src"
+    }
+  }
+}
