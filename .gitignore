@@ -1,0 +1,15 @@
+composer.phar
+/.buildpath/
+/.project/
+/.settings/
+/.idea/
+/vendor/
+/runtime/*
+/test/runtime/*
+/docs/*
+/public/upload/*
+/test/upload/*
+composer.lock
+.DS_Store
+*--*
+*swp

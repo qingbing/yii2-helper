@@ -1,0 +1,15 @@
+# 抽象类(SystemProxy): 系统代理
+- 封装用于调用三方系统的访问代理
+- 支持属性
+    - system: 访问三方系统在当前系统的代码，如果设置，就必须是 {{%system}} 表中的记录
+- 提供方法
+    - setSystem($system): 设置系统模型
+    - (protected)getMethod(): 获取请求方法
+    - (protected)getPathInfo(): 获取请求 pathInfo
+    - (protected)isFormData(): 判断是否是 form-data， form-data 表示可以上传文件
+    - (protected)getParams(): 获取访问请求的参数
+    - (protected)getUploadedFiles(): 保存转发文件
+    - (protected)unlinkUploadedFiles(array $files): 删除转发文件
+- 抽象方法
+    - transmit(): 转发系统，获取响应结果
+    - parseResponse(Response $response): 解析请求响应
