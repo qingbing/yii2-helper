@@ -90,6 +90,7 @@ yii 公用的一些基础类库
 
 ## 功能集
 1. [IP地址解析 : Ip2Location](doc/Ip2Location.md)
+1. [常量配置 define-local.php](doc/define-local.md)
 1. action操作
     1. \YiiHelper\actions\ClearCache: 系统缓存清理
 1. 三方系统管理
