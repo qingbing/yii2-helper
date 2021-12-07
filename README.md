@@ -127,3 +127,4 @@ yii 公用的一些基础类库
 ## SQL作用
 1. sql/prefix_system.sql: 三方系统登录
 1. sql/prefix_client_logs.sql: Client请求访问三方系统开启 openDbLog 时存储访问日志
+1. sql/prefix_life_collection.sql: 生命周期数据采用DbStore存储时使用
