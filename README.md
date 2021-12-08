@@ -85,6 +85,7 @@ yii 公用的一些基础类库
 1. [yii-validator扩展验证数据是否是密码格式 : PasswordValidator](doc/validators/PasswordValidator.md)
 1. [yii-validator扩展验证数据是否是座机号码 : PhoneValidator](doc/validators/PhoneValidator.md)
 1. [yii-validator扩展验证数据是否是qq号码 : QqValidator](doc/validators/QqValidator.md)
+1. [yii-validator扩展验证安全操作密码 : SecurityOperateValidator](doc/validators/SecurityOperateValidator.md)
 1. [yii-validator扩展验证数据是否是用户名格式 : UsernameValidator](doc/validators/UsernameValidator.md)
 1. [yii-validator扩展验证数据是否是用户名格式 : ZipCodeValidator](doc/validators/ZipCodeValidator.md)
 

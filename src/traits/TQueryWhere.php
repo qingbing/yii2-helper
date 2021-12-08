@@ -9,6 +9,7 @@ namespace YiiHelper\traits;
 
 
 use yii\db\Query;
+use Zf\Helper\Format;
 
 /**
  * 片段: yii\db\Query的扩展处理
@@ -69,5 +70,56 @@ trait TQueryWhere
             }
         }
         return $query;
+    }
+
+    /**
+     * 时间有效和无效的SQL构建
+     *
+     * @param Query $query
+     * @param int $isExpire 是否有效
+     * @param string $beginField 生效时间/日期字段
+     * @param string $endField 失效时间/日期字段
+     */
+    protected function expireWhere(Query $query, $isExpire = 1, $beginField = 'expire_begin_date', $endField = 'expire_end_date')
+    {
+        if ("" !== $isExpire && null !== $isExpire) {
+            $nowDatetime = Format::datetime();
+            if ($isExpire) {
+                // 有效用户
+                $query->andWhere([
+                    'or',
+                    [ // 未设置有效期的
+                      'and',
+                      "{$beginField} < :emptyDate AND {$endField} < :emptyDate"
+                    ], [
+                        'not', // 有效反转
+                        [ // 有效期的
+                          'or',
+                          ['and', "{$endField} < :nowDatetime AND {$endField} > :emptyDate"],
+                          ['and', "{$beginField} > :nowDatetime AND {$beginField} > :emptyDate"],
+                        ]
+                    ]
+                ], [
+                    ':nowDatetime' => $nowDatetime,
+                    ':emptyDate'   => EMPTY_TIME_MIN,
+                ]);
+            } else {
+                // 失效用户
+                $query->andWhere([
+                    'or',
+                    [ // 已过期的
+                      'and',
+                      "{$endField} < :nowDatetime AND {$endField} > :emptyDate"
+                    ],
+                    [ // 未生效的
+                      'and',
+                      "{$beginField} > :nowDatetime AND {$beginField} > :emptyDate"
+                    ],
+                ], [
+                    ':nowDatetime' => $nowDatetime,
+                    ':emptyDate'   => EMPTY_TIME_MIN,
+                ]);
+            }
+        }
     }
 }
