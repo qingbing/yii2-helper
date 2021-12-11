@@ -23,9 +23,10 @@ class Req
     const ACCESS_IP_KEY = __CLASS__ . ":access-ip";
     const IS_GUEST_KEY  = __CLASS__ . ':isGuest';
     const LOGIN_UID_KEY = __CLASS__ . ':loginUid';
+    const IS_SUPER_KEY  = __CLASS__ . ':isSuper';
 
     /**
-     * 获取客户端 IP
+     * 获取客户端IP
      * @return mixed|null
      */
     public static function getUserIp()
@@ -66,16 +67,6 @@ class Req
     }
 
     /**
-     * 设置当前是否登录
-     *
-     * @param bool $isGuest
-     */
-    public static function setIsGuest($isGuest)
-    {
-        DataStore::set(self::IS_GUEST_KEY, $isGuest);
-    }
-
-    /**
      * 获取当前登录用户id
      *
      * @return mixed|null
@@ -91,12 +82,21 @@ class Req
     }
 
     /**
-     * 设置当前登录用户id
+     * 获取登录用户是否超管
      *
-     * @param mixed $uid
+     * @return mixed|null
      */
-    public static function setUid($uid)
+    public static function getIsSuper()
     {
-        DataStore::set(self::LOGIN_UID_KEY, $uid);
+        return DataStore::get(self::IS_SUPER_KEY, function () {
+            if (Yii::$app->getRequest()->getHeaders()->has('x-portal-is-super')) {
+                return Yii::$app->getRequest()->getHeaders()->get('x-portal-is-super');
+            }
+            $userComponent = Yii::$app->getUser();
+            if (method_exists($userComponent, 'getIsSuper')) {
+                return $userComponent->getIsSuper();
+            }
+            return false;
+        });
     }
 }

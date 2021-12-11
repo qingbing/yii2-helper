@@ -93,6 +93,7 @@ abstract class InnerProxy extends Proxy
         $this->client->setHeaders([
             'x-forwarded-for'   => Req::getUserIp(),
             'x-portal-is-guest' => Req::getIsGuest(),
+            'x-portal-is-super' => Req::getIsSuper(),
             'x-portal-uid'      => Req::getUid(),
         ]);
     }
