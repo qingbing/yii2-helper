@@ -115,7 +115,7 @@ abstract class RestController extends Controller
      * @return array|mixed|string|null
      * @throws Exception
      */
-    protected function getParam(string $key, $default = null)
+    public function getParam(string $key, $default = null)
     {
         $subKey = '';
         if (false !== strpos($key, '.')) {
