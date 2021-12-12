@@ -99,6 +99,11 @@ yii 公用的一些基础类库
     - 模型: \YiiHelper\features\system\models\Systems
 1. 三方系统调用模型: \YiiHelper\models\ClientLogs(\YiiHelper\helpers\client\Client::$openDbLog 为true时，请求记录会记录模型表{{%client_logs}}中)
 
+
+## 可能排错方式
+1. [transmit系统接受不到参数](doc/resolveError/001.transmit系统接受不到参数.md)
+
+
 ## 自有系统代理
 - 配置系统: \YiiHelper\proxy\ConfigureProxy
 ```php

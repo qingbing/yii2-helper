@@ -11,6 +11,7 @@ use Exception;
 use yii\base\Event;
 use yii\helpers\ArrayHelper;
 use yii\rest\Controller;
+use yii\web\BadRequestHttpException;
 use yii\web\Response;
 use YiiHelper\traits\TResponse;
 use YiiHelper\traits\TValidator;
@@ -91,6 +92,19 @@ abstract class RestController extends Controller
                 throw new CustomException($errMsg);
             }
         }
+    }
+
+    /**
+     * @param $action
+     * @return bool
+     * @throws BadRequestHttpException
+     */
+    public function beforeAction($action)
+    {
+        if ($this->service instanceof Service && !$this->service->beforeAction($action)) {
+            return false;
+        }
+        return parent::beforeAction($action);
     }
 
     /**
