@@ -91,10 +91,11 @@ abstract class InnerProxy extends Proxy
         }
         // 添加透传的 header
         $this->client->setHeaders([
-            'x-forwarded-for'   => Req::getUserIp(),
-            'x-portal-is-guest' => Req::getIsGuest(),
-            'x-portal-is-super' => Req::getIsSuper(),
-            'x-portal-uid'      => Req::getUid(),
+            'x-forwarded-for'    => Req::getUserIp(),
+            'x-portal-host-info' => Req::getUserHostInfo(),
+            'x-portal-is-guest'  => Req::getIsGuest(),
+            'x-portal-is-super'  => Req::getIsSuper(),
+            'x-portal-uid'       => Req::getUid(),
         ]);
     }
 

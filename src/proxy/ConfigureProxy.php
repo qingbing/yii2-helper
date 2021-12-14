@@ -18,8 +18,9 @@ use Zf\Helper\DataStore;
  */
 class ConfigureProxy extends InnerProxy
 {
-    const URL_FORM_SETTING = '/inner/public/form-setting';
-    const URL_TEST         = '/inner/test/index';
+    const URL_FORM_SETTING    = '/inner/public/form-setting';
+    const URL_REPLACE_SETTING = '/inner/public/replace-setting';
+    const URL_TEST            = '/inner/test/index';
 
     /**
      * 获取配置系统中配置表单信息
@@ -40,6 +41,22 @@ class ConfigureProxy extends InnerProxy
             return $settings;
         }
         return $settings[$subKey] ?? $default;
+    }
+
+    /**
+     * 获取配置系统中替换后配置内容
+     *
+     * @param string $code
+     * @param array $fields
+     * @return string
+     * @throws \Exception
+     */
+    public function replaceSetting(string $code, array $fields = []): string
+    {
+        return $this->send(self::URL_REPLACE_SETTING, [
+            'code'   => $code,
+            'fields' => $fields,
+        ]);
     }
 
     public function test()

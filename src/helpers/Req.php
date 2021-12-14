@@ -19,11 +19,12 @@ use Zf\Helper\DataStore;
  */
 class Req
 {
-    const USER_IP_KEY   = __CLASS__ . ":client-ip";
-    const ACCESS_IP_KEY = __CLASS__ . ":access-ip";
-    const IS_GUEST_KEY  = __CLASS__ . ':isGuest';
-    const LOGIN_UID_KEY = __CLASS__ . ':loginUid';
-    const IS_SUPER_KEY  = __CLASS__ . ':isSuper';
+    const USER_IP_KEY        = __CLASS__ . ":client-ip";
+    const USER_HOST_INFO_KEY = __CLASS__ . ":host-info";
+    const ACCESS_IP_KEY      = __CLASS__ . ":access-ip";
+    const IS_GUEST_KEY       = __CLASS__ . ':isGuest';
+    const LOGIN_UID_KEY      = __CLASS__ . ':loginUid';
+    const IS_SUPER_KEY       = __CLASS__ . ':isSuper';
 
     /**
      * 获取客户端IP
@@ -33,6 +34,21 @@ class Req
     {
         return DataStore::get(self::USER_IP_KEY, function () {
             return Yii::$app->getRequest()->getUserIP();
+        });
+    }
+
+    /**
+     * 获取直接访问的IP(refer-client-ip)
+     *
+     * @return mixed|null
+     */
+    public static function getUserHostInfo()
+    {
+        return DataStore::get(self::USER_HOST_INFO_KEY, function () {
+            if (Yii::$app->getRequest()->getHeaders()->has('x-portal-host-info')) {
+                return Yii::$app->getRequest()->getHeaders()->get('x-portal-host-info');
+            }
+            return Yii::$app->getRequest()->getHostInfo();
         });
     }
 

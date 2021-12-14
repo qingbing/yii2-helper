@@ -16,10 +16,10 @@ use Zf\Helper\FileHelper;
 /**
  * 操作类 ： 系统缓存清理
  *
- * Class ClearCache
+ * Class ActionClearCache
  * @package YiiHelper\actions
  */
-class ClearCache extends Action
+class ActionClearCache extends Action
 {
     use TResponse;
     /**

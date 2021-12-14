@@ -47,3 +47,13 @@ namespace {
         public $proxyPortal;
     }
 }
+
+namespace yii\base {
+    class Action
+    {
+        /**
+         * @var \YiiHelper\abstracts\RestController
+         */
+        public $controller;
+    }
+}
