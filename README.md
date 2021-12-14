@@ -59,6 +59,10 @@ yii 公用的一些基础类库
     - [抽象类，系统代理 : SystemProxy](doc/helpers/client/SystemProxy.md)
 
 
+### 逻辑类
+1. [配置的 key-value 的获取 : KeyValues](doc/logic/KeyValues.md)
+
+
 ### 工具
 1. [redis 计数器 : RedisCounter](doc/tools/RedisCounter.md)
 1. [生命周期集合管理 : LifeCollection](doc/tools/lifeCollection/LifeCollection.md)
