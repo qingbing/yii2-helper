@@ -38,7 +38,7 @@ abstract class SuperService extends Service
      *
      * @throws ForbiddenHttpException
      */
-    protected function requireSuper()
+    protected function superRequired()
     {
         if (!$this->isSuper) {
             throw new ForbiddenHttpException("您无权操作");
