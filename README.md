@@ -11,6 +11,7 @@ yii 公用的一些基础类库
 1. [db-model基类 : Model](doc/abstracts/Model.md)
 1. [控制器基类 : RestController](doc/abstracts/RestController.md)
 1. [服务基类 : Service](doc/abstracts/Service.md)
+1. [超管服务基类 : SuperService](doc/abstracts/SuperService.md)
 
 
 ### 封装行为
