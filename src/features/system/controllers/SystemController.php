@@ -44,10 +44,10 @@ class SystemController extends RestController
             ['name', 'string', 'label' => '系统名称'],
             ['type', 'in', 'label' => '系统类型', 'range' => array_keys(Systems::types())],
             ['is_enable', 'in', 'label' => '启用状态', 'range' => array_keys(TLabelEnable::enableLabels())],
-            ['is_allow_new_interface', 'in', 'label' => '接受新接口', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_record_field', 'in', 'label' => '记录新字段', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_open_validate', 'in', 'label' => '开启接口校验', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_strict_validate', 'in', 'label' => '开启严格校验', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_allow_new_interface', 'boolean', 'label' => '接受新接口'],
+            ['is_record_field', 'boolean', 'label' => '记录新字段'],
+            ['is_open_validate', 'boolean', 'label' => '开启接口校验'],
+            ['is_strict_validate', 'boolean', 'label' => '开启严格校验'],
         ], null, true);
         // 业务处理
         $res = $this->service->list($params);
@@ -75,10 +75,10 @@ class SystemController extends RestController
             ['ext', JsonValidator::class, 'label' => '扩展字段'],
             ['sort_order', 'integer', 'label' => '排序', 'default' => 0],
             ['is_enable', 'in', 'label' => '启用状态', 'range' => array_keys(TLabelEnable::enableLabels())],
-            ['is_allow_new_interface', 'in', 'label' => '接受新接口', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_record_field', 'in', 'label' => '记录新字段', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_open_validate', 'in', 'label' => '开启接口校验', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_strict_validate', 'in', 'label' => '开启严格校验', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_allow_new_interface', 'boolean', 'label' => '接受新接口'],
+            ['is_record_field', 'boolean', 'label' => '记录新字段'],
+            ['is_open_validate', 'boolean', 'label' => '开启接口校验'],
+            ['is_strict_validate', 'boolean', 'label' => '开启严格校验'],
         ]);
         // 业务处理
         $res = $this->service->add($params);
@@ -106,10 +106,10 @@ class SystemController extends RestController
             ['ext', JsonValidator::class, 'label' => '扩展字段'],
             ['sort_order', 'integer', 'label' => '排序'],
             ['is_enable', 'in', 'label' => '启用状态', 'range' => array_keys(TLabelEnable::enableLabels())],
-            ['is_allow_new_interface', 'in', 'label' => '接受新接口', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_record_field', 'in', 'label' => '记录新字段', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_open_validate', 'in', 'label' => '开启接口校验', 'range' => array_keys(TLabelYesNo::isLabels())],
-            ['is_strict_validate', 'in', 'label' => '开启严格校验', 'range' => array_keys(TLabelYesNo::isLabels())],
+            ['is_allow_new_interface', 'boolean', 'label' => '接受新接口'],
+            ['is_record_field', 'boolean', 'label' => '记录新字段'],
+            ['is_open_validate', 'boolean', 'label' => '开启接口校验'],
+            ['is_strict_validate', 'boolean', 'label' => '开启严格校验'],
         ]);
         // 业务处理
         $res = $this->service->edit($params);
