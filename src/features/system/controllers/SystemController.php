@@ -15,7 +15,6 @@ use YiiHelper\features\system\models\Systems;
 use YiiHelper\features\system\services\SystemService;
 use YiiHelper\validators\JsonValidator;
 use Zf\Helper\Traits\Models\TLabelEnable;
-use Zf\Helper\Traits\Models\TLabelYesNo;
 
 /**
  * 服务 ： 系统管理
