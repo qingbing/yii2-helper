@@ -35,7 +35,6 @@ class SystemService extends Service implements ISystemService
             ->orderBy('sort_order ASC');
         // 等于查询
         $this->attributeWhere($query, $params, [
-            'code',
             'type',
             'is_enable',
             'is_allow_new_interface',
@@ -44,7 +43,7 @@ class SystemService extends Service implements ISystemService
             'is_strict_validate'
         ]);
         // like 查询
-        $this->likeWhere($query, $params, 'name');
+        $this->likeWhere($query, $params, ['code', 'name']);
         return Pager::getInstance()->pagination($query, $params['pageNo'], $params['pageSize']);
     }
 
