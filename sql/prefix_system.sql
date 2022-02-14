@@ -8,7 +8,7 @@ CREATE TABLE `portal_systems` (
   `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
   `uri_prefix` varchar(100) NOT NULL DEFAULT '' COMMENT '系统调用时访问URI前缀',
   `type` varchar(20) NOT NULL DEFAULT 'inner' COMMENT '系统类型[inner->当前系统；transfer->当前系统转发；outer->外部系统]',
-  `proxy` varchar(50) NOT NULL DEFAULT '' COMMENT '参数验证通过后的代理组件ID',
+  `proxy_id` varchar(50) NOT NULL DEFAULT '' COMMENT '参数验证通过后的代理组件ID',
   `ext` json DEFAULT NULL COMMENT '扩展字段数据',
   `is_enable` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '系统是否启用状态[0:未启用; 1:已启用]，未启用抛异常',
   -- 记录
@@ -30,7 +30,7 @@ CREATE TABLE `portal_systems` (
 --  Data for `{{%route_systems}}`
 -- ----------------------------
 
-insert into `portal_systems` ( `code`, `name`, `description`, `uri_prefix`, `type`, `proxy`, `ext`, `is_enable`, `is_allow_new_interface`, `is_record_field`, `is_open_validate`, `is_strict_validate`, `sort_order`) values
+insert into `portal_systems` ( `code`, `name`, `description`, `uri_prefix`, `type`, `proxy_id`, `ext`, `is_enable`, `is_allow_new_interface`, `is_record_field`, `is_open_validate`, `is_strict_validate`, `sort_order`) values
 ( 'program', '程序员后台', '程序员配置后台程序', '', 'inner', '', null, '1', '1', '1', '1', '0', '127'),
 ( 'portal', '后台门户', '后台各系统统一入口转发', '', 'inner', '', null, '1', '1', '1', '1', '0', '127'),
 ( 'admin', '管理员后台', '管理员配置后台程序', '', 'inner', '', null, '1', '1', '1', '1', '0', '127'),

@@ -9,11 +9,14 @@ namespace YiiHelper\features\system\services;
 
 
 use Exception;
+use yii\base\Action;
 use YiiHelper\abstracts\Service;
 use YiiHelper\features\system\interfaces\ISystemService;
 use YiiHelper\features\system\models\Systems;
 use YiiHelper\helpers\Pager;
+use YiiHelper\helpers\Req;
 use Zf\Helper\Exceptions\BusinessException;
+use Zf\Helper\Exceptions\ForbiddenHttpException;
 
 /**
  * 服务 : 系统管理
@@ -23,6 +26,21 @@ use Zf\Helper\Exceptions\BusinessException;
  */
 class SystemService extends Service implements ISystemService
 {
+    /**
+     * 在action前统一执行
+     *
+     * @param Action|null $action
+     * @return bool
+     * @throws ForbiddenHttpException
+     */
+    public function beforeAction(Action $action = null)
+    {
+        if (Req::getIsSuper()) {
+            return true;
+        }
+        throw new ForbiddenHttpException("您无权操作该界面");
+    }
+
     /**
      * 系统列表
      *

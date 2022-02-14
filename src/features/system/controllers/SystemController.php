@@ -68,7 +68,7 @@ class SystemController extends RestController
             ['code', 'unique', 'label' => '系统代码', 'targetClass' => Systems::class, 'targetAttribute' => 'code'],
             ['name', 'unique', 'label' => '系统名称', 'targetClass' => Systems::class, 'targetAttribute' => 'name'],
             ['type', 'in', 'label' => '系统类型', 'range' => array_keys(Systems::types())],
-            ['proxy', 'string', 'label' => '代理组件ID'],
+            ['proxy_id', 'string', 'label' => '代理组件ID'],
             ['uri_prefix', 'string', 'label' => 'URI前缀'],
             ['description', 'string', 'label' => '系统描述'],
             ['ext', JsonValidator::class, 'label' => '扩展字段'],
@@ -100,6 +100,7 @@ class SystemController extends RestController
             [['id'], 'required'], // 必填字段减少，为了表格编辑
             ['id', 'exist', 'label' => '系统ID', 'targetClass' => Systems::class, 'targetAttribute' => 'id'],
             ['name', 'unique', 'label' => '系统名称', 'targetClass' => Systems::class, 'targetAttribute' => 'name', 'filter' => ['!=', 'id', $id]],
+            ['proxy_id', 'string', 'label' => '代理组件ID'],
             ['uri_prefix', 'string', 'label' => 'URI前缀'],
             ['description', 'string', 'label' => '系统描述'],
             ['ext', JsonValidator::class, 'label' => '扩展字段'],
