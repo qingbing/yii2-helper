@@ -45,7 +45,8 @@ class ErrorHandler extends \yii\web\ErrorHandler
         // 异常信息处理
         $isCustomException = $exception instanceof CustomException;
         if ($isCustomException && null !== $this->errorAction) {
-            $res = Yii::$app->runAction($this->errorAction);
+            $response->format = Response::FORMAT_JSON;
+            $res              = Yii::$app->runAction($this->errorAction);
             if ($res instanceof Response) {
                 $response = $res;
             } else {
