@@ -58,6 +58,7 @@ class ActionClearCache extends Action
             }
         }
         @closedir($dp);
+        AppHelper::app()->cacheHelper->flush();
         return $this->success(true, '缓存清理成功');
     }
 }

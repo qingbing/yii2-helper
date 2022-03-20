@@ -96,4 +96,14 @@ class CacheHelper extends Component
         }
         return false;
     }
+
+    /**
+     * 清空所有缓存
+     *
+     * @return bool
+     */
+    public function flush()
+    {
+        return $this->cache->flush();
+    }
 }
