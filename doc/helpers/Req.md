@@ -6,3 +6,5 @@
     - getIsGuest(): 获取当前是否登录
     - getUid(): 获取当前登录用户id
     - getIsSuper(): 获取登录用户是否超管
+    - getAccount(): 获取当前登录用户账户
+    - getNickname(): 获取当前登录用户昵称

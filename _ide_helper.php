@@ -45,6 +45,10 @@ namespace {
          * @var \YiiHelper\proxy\PortalProxy::class
          */
         public $proxyPortal;
+        /**
+         * @var \Zf\PhpUpload\base\IUpload::class
+         */
+        public $upload;
     }
 }
 

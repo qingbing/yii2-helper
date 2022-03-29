@@ -9,7 +9,6 @@ namespace YiiHelper\abstracts;
 
 use Exception;
 use yii\base\Event;
-use yii\helpers\ArrayHelper;
 use yii\rest\Controller;
 use yii\web\BadRequestHttpException;
 use yii\web\Response;
@@ -105,36 +104,6 @@ abstract class RestController extends Controller
             return false;
         }
         return parent::beforeAction($action);
-    }
-
-    /**
-     * 获取参数
-     *
-     * @param string $key
-     * @param null|mixed $default
-     * @return array|mixed|string|null
-     * @throws Exception
-     */
-    public function getParam(string $key, $default = null)
-    {
-        $subKey = '';
-        if (false !== strpos($key, '.')) {
-            list($key, $subKey) = explode('.', $key, 2);
-        }
-        $val = $this->request->post($key);
-        if (null === $val) {
-            $val = $this->request->get($key, $default);
-        }
-        if (is_string($val)) {
-            $val = trim($val);
-        }
-        if (!empty($subKey)) {
-            if (!is_array($val)) {
-                return $default;
-            }
-            return ArrayHelper::getValue($val, $subKey, $default);
-        }
-        return $val;
     }
 
     /**

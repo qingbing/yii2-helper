@@ -27,7 +27,8 @@
     "yiisoft/yii2-httpclient": "^2.0",
     "yiisoft/yii2-queue": "^2.3",
     "yiisoft/yii2-redis": "^2.0",
-    "qingbing/zf-helper": ">=1.0, <2.0"
+    "qingbing/zf-helper": ">=1.0, <2.0",
+    "qingbing/php-upload": "^1.0"
   },
   "autoload": {
     "files": [

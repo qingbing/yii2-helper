@@ -12,24 +12,24 @@ use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use YiiHelper\helpers\Req;
 
-
 /**
- * 模型中登录用户昵称自动填充行为
+ * 模型中用户账户自动填充行为
  *
- * Class NicknameBehavior
+ * Class UidBehavior
  * @package YiiHelper\behaviors
  */
-class NicknameBehavior extends AttributeBehavior
+class AccountBehavior extends AttributeBehavior
 {
     /**
      * @var array 操作事件及字段定义
      */
     public $attributes = [
-        ActiveRecord::EVENT_BEFORE_INSERT => 'nickname',
+        ActiveRecord::EVENT_BEFORE_INSERT => 'account',
+        ActiveRecord::EVENT_BEFORE_UPDATE => 'account',
     ];
 
     /**
-     * 获取登录用户名
+     * 获取登录用户账户
      *
      * @param \yii\base\Event $event
      * @return int|mixed|string
@@ -37,7 +37,7 @@ class NicknameBehavior extends AttributeBehavior
     protected function getValue($event)
     {
         if (null === $this->value) {
-            return Req::getNickname();
+            return Req::getAccount();
         }
         return parent::getValue($event);
     }

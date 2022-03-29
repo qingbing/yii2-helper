@@ -8,19 +8,20 @@
 namespace YiiHelper\traits;
 
 
-use Yii;
 use yii\base\InvalidConfigException;
 use YiiHelper\helpers\DynamicModel;
 use Zf\Helper\Exceptions\BusinessException;
 
 /**
- * 数据验证片段
+ * 片段: 数据验证
  *
  * Trait TValidator
  * @package YiiHelper\traits
  */
 trait TValidator
 {
+    use TRequest;
+
     /**
      * 将参数放入验证规则进行规则验证，并返回规则字段的值
      *
@@ -36,9 +37,8 @@ trait TValidator
     protected function validateParams($rules = [], ?array $data = null, $withPageRule = false, array $explodeFields = [], ?string $delimiter = ',')
     {
         // 数据获取
-        $request = Yii::$app->getRequest();
         if (null === $data) {
-            $data = array_merge($request->getQueryParams(), $request->getBodyParams());
+            $data = $this->getParams();
         }
         if (empty($rules)) {
             return [];
