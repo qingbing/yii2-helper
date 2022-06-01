@@ -33,7 +33,7 @@ trait TSave
     {
         if (!$this->save($runValidation, $attributeNames)) {
             if (YII_DEBUG) {
-                $message = reset(reset($this->getErrors()));
+                $message = reset($this->getFirstErrors());
             } else {
                 $message = '数据保存失败';
             }
