@@ -18,5 +18,17 @@ use YiiHelper\services\interfaces\ICurdService;
  */
 interface ISystemService extends ICurdService
 {
+    /**
+     * 系统类型map
+     *
+     * @return array
+     */
+    public function typeMap(): array;
 
+    /**
+     * 系统选项卡
+     *
+     * @return array
+     */
+    public function options(): array;
 }

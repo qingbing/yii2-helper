@@ -35,10 +35,33 @@ class SystemService extends Service implements ISystemService
      */
     public function beforeAction(Action $action = null)
     {
-        if (Req::getIsSuper()) {
+        if (Req::getIsSuper() || in_array($action->id, [
+                'type-map',
+                'options',
+            ])) {
             return true;
         }
         throw new ForbiddenHttpException("您无权操作该界面");
+    }
+
+    /**
+     * 系统类型map
+     *
+     * @return array
+     */
+    public function typeMap(): array
+    {
+        return Systems::types();
+    }
+
+    /**
+     * 系统选项卡
+     *
+     * @return array
+     */
+    public function options(): array
+    {
+        return Systems::getOptions();
     }
 
     /**

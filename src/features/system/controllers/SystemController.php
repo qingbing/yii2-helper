@@ -30,6 +30,34 @@ class SystemController extends RestController
     public $serviceClass     = SystemService::class;
 
     /**
+     * 系统类型map
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function actionTypeMap(): array
+    {
+        // 业务处理
+        $res = $this->service->typeMap();
+        // 渲染结果
+        return $this->success($res, '系统类型map');
+    }
+
+    /**
+     * 系统选项卡
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function actionOptions(): array
+    {
+        // 业务处理
+        $res = $this->service->options();
+        // 渲染结果
+        return $this->success($res, '系统选项卡');
+    }
+
+    /**
      * 系统列表
      *
      * @return array
